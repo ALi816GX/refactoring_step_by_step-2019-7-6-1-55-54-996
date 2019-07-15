@@ -2,6 +2,7 @@ package com.tws.refactoring;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,23 +15,21 @@ import static org.junit.jupiter.api.Assertions.*;
  * @Time:14:44
  * @description:
  */
-class PoliceTest {
-
-    private static Police police;
-    private Driver driver;
+class DeiverTest {
 
 
-    @BeforeAll
-    public static void setUp(){
-        police = new Police();
+    private static Driver driver;
+
+    @BeforeEach
+    void setUp() {
+        driver = new Driver();
     }
-
 
     @Test
     void should_return_true_when_call_checkDriver_given_18() {
 
-        driver = new Driver(18);
-        Boolean result1 = police.checkDriver(driver);
+        driver.setAge(18);
+        Boolean result1 = driver.isLegalDriver();
         Assertions.assertSame(true,result1);
 
     }
@@ -38,8 +37,8 @@ class PoliceTest {
     @Test
     void should_return_false_when_call_checkDriver_given_12() {
 
-        driver = new Driver(12);
-        Boolean result1 = police.checkDriver(driver);
+        driver.setAge(12);
+        Boolean result1 = driver.isLegalDriver();
         Assertions.assertSame(false,result1);
 
     }
@@ -48,8 +47,8 @@ class PoliceTest {
     @Test
     void should_return_true_when_call_checkDriver_given_30() {
 
-        driver = new Driver(30);
-        Boolean result1 = police.checkDriver(driver);
+        driver.setAge(30);
+        Boolean result1 = driver.isLegalDriver();
         Assertions.assertSame(true,result1);
 
     }
